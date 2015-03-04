@@ -12,19 +12,18 @@ Your function should return length = 2, and A is now [1,2].
 """
 
 
-def delete_duplicates(array):
-    count = len(array)
-    index = count - 1
-    prefix_index = index - 1
-    while prefix_index >= 0:
-        if array[index] == array[prefix_index]:
-            del array[index]
-            index = prefix_index
-            prefix_index -= 1
-        else:
-            index = prefix_index
-            prefix_index -= 1
-    return array
+def delete_duplicates(ary):
+    count = len(ary)
+    if 0 == count:
+        return 0
+    index = 1
+    prefix_index = 0
+    while index < count:
+        if ary[prefix_index] != ary[index]:
+            prefix_index += 1
+            ary[prefix_index] = ary[index]
+        index += 1
+    return prefix_index + 1
 
 print delete_duplicates([12, 12, 13, 23, 23])
 print delete_duplicates([12, 12])
